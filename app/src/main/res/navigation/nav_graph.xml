@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/feedFragment">
+
+    <fragment
+        android:id="@+id/feedFragment"
+        android:name="ru.netology.nmedia.ui.FeedFragment"
+        tools:layout="@layout/feed_fragment">
+        <action
+            android:id="@+id/action_feedFragment_to_postContentFragment"
+            app:destination="@id/postContentFragment" />
+        <action
+            android:id="@+id/action_feedFragment_to_separatePostFragment"
+            app:destination="@id/separatePostFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/postContentFragment"
+        android:name="ru.netology.nmedia.ui.PostContentFragment"
+        tools:layout="@layout/post_content_fragment" >
+
+    <argument
+        android:name="textToEdit"
+        app:argType="string"
+        app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/separatePostFragment"
+        android:name="ru.netology.nmedia.ui.SeparatePostFragment"
+        tools:layout="@layout/separate_post_view" >
+        <argument
+            android:name="postCardId"
+            app:argType="long"
+            app:nullable="false" />
+        <action
+            android:id="@+id/action_separatePostFragment_to_postContentFragment"
+            app:destination="@id/postContentFragment" />
+    </fragment>
+</navigation>
